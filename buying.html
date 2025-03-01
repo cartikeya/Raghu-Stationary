@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Product</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+
+    <!-- Buy Page -->
+    <section class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-6">Available Sellers</h1>
+
+        <!-- Seller List -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            
+            <!-- Seller 1 -->
+            <div class="border-b pb-4 mb-4">
+                <h3 class="text-xl font-semibold">Seller: John Doe</h3>
+                <p class="text-gray-600">Condition: Good</p>
+                <p class="text-gray-600">Price: $22.00</p>
+                
+                <!-- Seller Uploaded Images -->
+                <div class="flex space-x-4 mt-2">
+                    <img src="/uploads/drafter_front1.jpg" alt="Front View" class="w-24 h-24 object-cover rounded-lg">
+                    <img src="/uploads/drafter_back1.jpg" alt="Back View" class="w-24 h-24 object-cover rounded-lg">
+                </div>
+
+                <!-- Buttons -->
+                <div class="mt-4 flex space-x-4">
+                    <button onclick="openChat('John Doe')" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Chat</button>
+                    <button class="bg-green-500 text-white px-4 py-2 rounded-lg">Buy Now</button>
+                </div>
+            </div>
+
+            <!-- Seller 2 -->
+            <div class="border-b pb-4 mb-4">
+                <h3 class="text-xl font-semibold">Seller: Sarah Smith</h3>
+                <p class="text-gray-600">Condition: Fair</p>
+                <p class="text-gray-600">Price: $20.00</p>
+                
+                <!-- Seller Uploaded Images -->
+                <div class="flex space-x-4 mt-2">
+                    <img src="/uploads/drafter_front2.jpg" alt="Front View" class="w-24 h-24 object-cover rounded-lg">
+                    <img src="/uploads/drafter_back2.jpg" alt="Back View" class="w-24 h-24 object-cover rounded-lg">
+                </div>
+
+                <!-- Buttons -->
+                <div class="mt-4 flex space-x-4">
+                    <button onclick="openChat('Sarah Smith')" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Chat</button>
+                    <button class="bg-green-500 text-white px-4 py-2 rounded-lg">Buy Now</button>
+                </div>
+            </div>
+
+            <!-- Seller 3 -->
+            <div>
+                <h3 class="text-xl font-semibold">Seller: Alex Johnson</h3>
+                <p class="text-gray-600">Condition: Not Bad</p>
+                <p class="text-gray-600">Price: $18.00</p>
+                
+                <!-- Seller Uploaded Images -->
+                <div class="flex space-x-4 mt-2">
+                    <img src="/uploads/drafter_front3.jpg" alt="Front View" class="w-24 h-24 object-cover rounded-lg">
+                    <img src="/uploads/drafter_back3.jpg" alt="Back View" class="w-24 h-24 object-cover rounded-lg">
+                </div>
+
+                <!-- Buttons -->
+                <div class="mt-4 flex space-x-4">
+                    <button onclick="openChat('Alex Johnson')" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Chat</button>
+                    <button class="bg-green-500 text-white px-4 py-2 rounded-lg">Buy Now</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Chat Modal -->
+    <div id="chatModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white p-6 rounded-lg shadow-md w-96">
+            <h2 id="chatTitle" class="text-2xl font-bold mb-4">Chat with Seller</h2>
+            <div id="chatBox" class="h-40 p-2 bg-gray-100 rounded-lg overflow-y-auto mb-4"></div>
+            <input type="text" id="chatInput" class="w-full p-2 border rounded-lg" placeholder="Type your message...">
+            <div class="flex justify-end mt-2">
+                <button onclick="closeChat()" class="bg-red-500 text-white px-4 py-2 rounded-lg mr-2">Close</button>
+                <button onclick="sendMessage()" class="bg-green-500 text-white px-4 py-2 rounded-lg">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSeller = "";
+
+        function openChat(sellerName) {
+            currentSeller = sellerName;
+            document.getElementById("chatTitle").innerText = "Chat with " + sellerName;
+            document.getElementById("chatModal").classList.remove("hidden");
+            document.getElementById("chatBox").innerHTML = ""; // Clear chat history
+        }
+
+        function closeChat() {
+            document.getElementById("chatModal").classList.add("hidden");
+        }
+
+        function sendMessage() {
+            let message = document.getElementById("chatInput").value;
+            if (message.trim() !== "") {
+                let chatBox = document.getElementById("chatBox");
+                chatBox.innerHTML += `<p class="bg-blue-100 p-2 rounded-lg mb-2">${message}</p>`;
+                document.getElementById("chatInput").value = "";
+                chatBox.scrollTop = chatBox.scrollHeight; // Scroll to latest message
+            }
+        }
+    </script>
+
+</body>
+</html>

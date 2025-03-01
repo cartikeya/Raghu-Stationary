@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>College Stationery Marketplace</title>
+  <!-- Tailwind CSS CDN (for prototyping) -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+  <!-- Navigation Bar -->
+  <nav class="bg-white shadow-md">
+    <div class="container mx-auto px-4 py-2 flex justify-between items-center">
+      <a href="#" class="text-2xl font-bold text-blue-600">Raghu Stationery</a>
+      <div class="flex items-center space-x-4">
+        <a href="#" onclick="showSection('home')" class="text-gray-700 hover:text-blue-600">Home</a>
+        <a href="#" onclick="showSection('products')" class="text-gray-700 hover:text-blue-600">Products</a>
+        <a href="#" onclick="showSection('cart-page')" class="text-gray-700 hover:text-blue-600">Cart</a>
+        <a href="#" onclick="showSection('login-page')" class="text-gray-700 hover:text-blue-600">Login</a>
+      </div>
+    </div>
+  </nav>
+  
+
+  <!-- Home Page -->
+  <section id="home" class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-6">Welcome to Raghu Stationery</h1>
+    <!-- Search Bar -->
+    <div class="mb-6">
+      <input
+        type="text"
+        placeholder="Search products..."
+        class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
+    <!-- Category Filters -->
+    <div class="flex space-x-4 mb-6">
+      <button class="px-4 py-2 bg-blue-500 text-white rounded-lg">All</button>
+      <button class="px-4 py-2 bg-gray-200 rounded-lg">Drafters</button>
+      <button class="px-4 py-2 bg-gray-200 rounded-lg">Tools</button>
+      <button class="px-4 py-2 bg-gray-200 rounded-lg">Aprons</button>
+    </div>
+    <!-- Featured Products Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Product Card -->
+      <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow relative group">
+        <img src="/images/drafter.jpg" alt="Drafter" class="w-full h-48 object-cover rounded-lg">
+        <h3 class="text-xl font-semibold mt-2">Drafter</h3>
+        
+    
+        <!-- Hover Buttons (Initially Hidden) -->
+        <div class="absolute inset-0 flex items-center justify-center bg-white bg-opacity-90 opacity-0 group-hover:opacity-100 transition-opacity">
+            <a href="buying.html" class="bg-green-500 text-white px-4 py-2 rounded-lg mx-2">Buy</a>
+            <a href="selling.html" class="bg-red-500 text-white px-4 py-2 rounded-lg mx-2">Sell</a>
+        </div>
+    </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow relative group">
+        <img src="/images/drafter.jpg" alt="Drafter" class="w-full h-48 object-cover rounded-lg">
+        <h3 class="text-xl font-semibold mt-2">Drafter</h3>
+        
+    
+        
+        
+    
+        <!-- Hover Buttons (Initially Hidden) -->
+        <div class="absolute inset-0 flex items-center justify-center bg-white bg-opacity-90 opacity-0 group-hover:opacity-100 transition-opacity">
+            <button class="bg-green-500 text-white px-4 py-2 rounded-lg mx-2">Buy</button>
+            <button class="bg-red-500 text-white px-4 py-2 rounded-lg mx-2">Sell</button>
+        </div>
+    </div>
+      <div class="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow relative group">
+        <img src="/images/drafter.jpg" alt="Drafter" class="w-full h-48 object-cover rounded-lg">
+        <h3 class="text-xl font-semibold mt-2">Drafter</h3>
+        
+    
+        
+        
+    
+        <!-- Hover Buttons (Initially Hidden) -->
+        <div class="absolute inset-0 flex items-center justify-center bg-white bg-opacity-90 opacity-0 group-hover:opacity-100 transition-opacity">
+            <button class="bg-green-500 text-white px-4 py-2 rounded-lg mx-2">Buy</button>
+            <button class="bg-red-500 text-white px-4 py-2 rounded-lg mx-2">Sell</button>
+        </div>
+    </div>
+      <!-- Repeat for other products -->
+    </div>
+  </section>
+
+  <!-- Product Details Page -->
+  <section id="products" class="container mx-auto px-4 py-8 hidden">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <img src="/images/drafter.jpg" alt="Drafter" class="w-full rounded-lg">
+      <div>
+        <h1 class="text-3xl font-bold">Drafter</h1>
+        <p class="text-gray-600 mt-2">High-quality drafter for engineering students.</p>
+        <p class="text-2xl font-semibold mt-4">$25.00</p>
+        <div class="mt-6">
+          <button class="bg-blue-500 text-white px-6 py-2 rounded-lg mr-4">Add to Cart</button>
+          <button class="bg-green-500 text-white px-6 py-2 rounded-lg">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cart Page -->
+  <section id="cart-page" class="container mx-auto px-4 py-8 hidden">
+    <h1 class="text-3xl font-bold mb-6">Your Cart</h1>
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <!-- Cart Item -->
+      <div class="flex justify-between items-center mb-4">
+        <div class="flex items-center">
+          <img src="/images/drafter.jpg" alt="Drafter" class="w-16 h-16 object-cover rounded-lg">
+          <div class="ml-4">
+            <h3 class="text-xl font-semibold">Drafter</h3>
+            <p class="text-gray-600">$25.00</p>
+          </div>
+        </div>
+        <div class="flex items-center">
+          <input type="number" value="1" class="w-16 p-2 border rounded-lg">
+          <button class="ml-4 text-red-500">Remove</button>
+        </div>
+      </div>
+      <!-- Repeat for other cart items -->
+      <button class="mt-6 w-full bg-green-500 text-white py-2 rounded-lg">Checkout</button>
+    </div>
+  </section>
+
+  <!-- Login Page -->
+  <section id="login-page" class="container mx-auto px-4 py-8 hidden">
+  <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+    <h2 class="text-2xl font-bold mb-4">Login</h2>
+    <form onsubmit="showSection('login-page'); return false;">
+      <div class="mb-4">
+        <label class="block text-sm font-medium mb-2">Email</label>
+        <input type="email" class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+      </div>
+      <div class="mb-4">
+        <label class="block text-sm font-medium mb-2">Password</label>
+        <input type="password" class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+      </div>
+      <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-lg">Login</button>
+      <p>New Account? <a href=""> SIGNUP</a></p>
+    </form>
+  </div>
+  
+</section>
+
+  <!-- Footer -->
+  <footer class="bg-white shadow-md mt-8">
+                <!-- Floating Chat Button -->
+<div id="chatButton" class="fixed bottom-6 right-6 bg-blue-500 text-white p-3 rounded-full shadow-lg cursor-pointer" onclick="toggleChatList()">
+    💬 Chat (<span id="unreadCount">0</span>)
+</div>
+
+<!-- Chat List (Initially Hidden) -->
+<div id="chatListContainer" class="fixed bottom-16 right-6 bg-white w-80 rounded-lg shadow-lg hidden p-4">
+    <h3 class="text-lg font-semibold mb-2">Chats</h3>
+
+    <!-- Search Bar -->
+    <input id="searchUser" type="text" placeholder="Enter Name or Email..." class="w-full p-2 border rounded-lg focus:outline-none">
+    <button onclick="searchUser()" class="mt-2 w-full bg-blue-500 text-white py-2 rounded-lg">Search</button>
+    <p id="searchError" class="text-red-500 mt-2 hidden">User not found!</p>
+
+    <hr class="my-3">
+
+    <!-- Previous Chats -->
+    <div id="previousChats" class="h-40 overflow-y-auto">
+        <p class="text-gray-500 text-sm">No previous chats</p>
+    </div>
+</div>
+
+<!-- Chat Box (Initially Hidden) -->
+<div id="chatBox" class="fixed bottom-16 right-6 bg-white w-80 rounded-lg shadow-lg hidden">
+    <div class="bg-blue-500 text-white p-4 rounded-t-lg flex justify-between items-center">
+        <h3 id="chatWithUser" class="text-lg font-semibold">Chat</h3>
+        <button onclick="closeChat()" class="text-white">&times;</button>
+    </div>
+
+    <!-- Chat Messages -->
+    <div id="chatList" class="p-4 h-64 overflow-y-auto"></div>
+
+    <!-- Chat Input -->
+    <div class="p-2 border-t flex">
+        <input id="chatInput" type="text" placeholder="Type a message..." class="w-full p-2 border rounded-l-lg focus:outline-none">
+        <button onclick="sendMessage()" class="bg-blue-500 text-white px-4 py-2 rounded-r-lg">Send</button>
+    </div>
+</div>
+    <div class="container mx-auto px-4 py-4 text-center">
+      <p class="text-gray-600">&copy; 2023 StationeryHub. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function showSection(sectionId) {
+      document.querySelectorAll("section").forEach(section => {
+        section.classList.add("hidden");
+      });
+      document.getElementById(sectionId).classList.remove("hidden");
+    }
+    let chatOpen = false;
+    let unreadMessages = 0;
+    let messages = {};
+    let sellers = ["John Doe", "Sarah Smith"]; // Example seller list
+    let sellerEmails = { "John Doe": "john@example.com", "Sarah Smith": "sarah@example.com" };
+    let currentChatUser = "";
+    let previousChats = [];
+
+    // Toggle chat list visibility
+    function toggleChatList() {
+        let chatListContainer = document.getElementById("chatListContainer");
+        if (chatListContainer.classList.contains("hidden")) {
+            loadPreviousChats();
+            chatListContainer.classList.remove("hidden");
+        } else {
+            chatListContainer.classList.add("hidden");
+        }
+    }
+
+    // Load previous chats
+    function loadPreviousChats() {
+        let chatContainer = document.getElementById("previousChats");
+        chatContainer.innerHTML = previousChats.length > 0 ? "" : '<p class="text-gray-500 text-sm">No previous chats</p>';
+        
+        previousChats.forEach(user => {
+            let chatItem = document.createElement("div");
+            chatItem.className = "p-2 bg-gray-100 rounded-lg mb-2 cursor-pointer hover:bg-gray-200";
+            chatItem.innerText = user;
+            chatItem.onclick = () => openChatWithUser(user);
+            chatContainer.appendChild(chatItem);
+        });
+    }
+
+    // Search for user
+    function searchUser() {
+        let searchInput = document.getElementById("searchUser").value.trim();
+        let searchError = document.getElementById("searchError");
+
+        if (sellers.includes(searchInput) || Object.values(sellerEmails).includes(searchInput)) {
+            openChatWithUser(searchInput);
+        } else {
+            searchError.classList.remove("hidden");
+        }
+    }
+
+    // Open chat with a user
+    function openChatWithUser(user) {
+        currentChatUser = user;
+        document.getElementById("chatWithUser").innerText = `Chat with ${user}`;
+        document.getElementById("chatListContainer").classList.add("hidden");
+        document.getElementById("chatBox").classList.remove("hidden");
+
+        if (!previousChats.includes(user)) {
+            previousChats.push(user);
+        }
+        loadPreviousChats();
+
+        document.getElementById("chatList").innerHTML = `<h4 class="font-bold mb-2">Chat with ${user}</h4>`;
+        if (messages[user]) {
+            messages[user].forEach(msg => {
+                addMessageToChat(msg.text, msg.sender === "me");
+            });
+        }
+    }
+
+    // Close chat
+    function closeChat() {
+        document.getElementById("chatBox").classList.add("hidden");
+    }
+
+    // Send a message
+    function sendMessage() {
+        let messageInput = document.getElementById("chatInput");
+        let message = messageInput.value.trim();
+        if (message === "") return;
+
+        addMessageToChat(message, true);
+
+        if (!messages[currentChatUser]) messages[currentChatUser] = [];
+        messages[currentChatUser].push({ text: message, sender: "me" });
+
+        messageInput.value = "";
+    }
+
+    // Simulate receiving a message
+    function receiveMessage(seller, message) {
+        if (!messages[seller]) messages[seller] = [];
+        messages[seller].push({ text: message, sender: "seller" });
+
+        if (!previousChats.includes(seller)) {
+            previousChats.push(seller);
+            loadPreviousChats();
+        }
+
+        if (currentChatUser === seller) {
+            addMessageToChat(message, false);
+        } else {
+            unreadMessages++;
+            document.getElementById("unreadCount").innerText = unreadMessages;
+        }
+    }
+
+    // Add message to chat UI
+    function addMessageToChat(message, isMe) {
+        let chatList = document.getElementById("chatList");
+        let messageElement = document.createElement("div");
+        messageElement.className = `p-2 rounded-lg mb-2 ${isMe ? "bg-blue-100 self-end" : "bg-gray-100 self-start"}`;
+        messageElement.innerText = message;
+        chatList.appendChild(messageElement);
+        chatList.scrollTop = chatList.scrollHeight;
+    }
+
+    // Simulate receiving messages (Test Example)
+    setTimeout(() => receiveMessage("John Doe", "Hey! Is the drafter still available?"), 3000);
+    setTimeout(() => receiveMessage("Sarah Smith", "Can you lower the price?"), 5000);
+  </script>
+
+</body>
+</html>

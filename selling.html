@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Product</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+
+    <!-- Sell Product Form -->
+    <section class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-6">Sell Your Product</h1>
+
+        <form class="bg-white p-6 rounded-lg shadow-md max-w-lg mx-auto">
+
+            <!-- Select Product Type -->
+            <div class="mb-4">
+                <label class="block text-sm font-medium mb-2">Which item do you want to sell?</label>
+                <select class="w-full p-2 border rounded-lg">
+                    <option value="Drafter">Drafter</option>
+                    <option value="Apron">Apron</option>
+                    <option value="Tools">Tools</option>
+                </select>
+            </div>
+
+            <!-- Select Condition -->
+            <div class="mb-4">
+                <label class="block text-sm font-medium mb-2">Condition of Item</label>
+                <div class="flex space-x-4">
+                    <label class="flex items-center">
+                        <input type="radio" name="condition" value="Good" class="mr-2"> Good
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="condition" value="Fair" class="mr-2"> Fair
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="condition" value="Not Bad" class="mr-2"> Not Bad
+                    </label>
+                </div>
+            </div>
+
+            <!-- Upload Product Images -->
+            <div class="mb-4">
+                <label class="block text-sm font-medium mb-2">Upload Images (Front & Back are Mandatory)</label>
+                <input type="file" accept="image/*" required class="w-full p-2 border rounded-lg mb-2">
+                <input type="file" accept="image/*" required class="w-full p-2 border rounded-lg mb-2">
+                <input type="file" accept="image/*" class="w-full p-2 border rounded-lg">
+                <input type="file" accept="image/*" class="w-full p-2 border rounded-lg">
+            </div>
+
+            <!-- Enter Selling Price -->
+            <div class="mb-4">
+                <label class="block text-sm font-medium mb-2">Selling Price ($)</label>
+                <input type="number" class="w-full p-2 border rounded-lg" placeholder="Enter price" required>
+            </div>
+
+            <!-- Contact Email -->
+            <div class="mb-4">
+                <label class="block text-sm font-medium mb-2">Your Email (For Buyer Contact)</label>
+                <input type="email" class="w-full p-2 border rounded-lg" placeholder="Enter your email" required>
+            </div>
+
+            <!-- Confirm Button -->
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-lg">Confirm</button>
+
+        </form>
+    </section>
+
+</body>
+</html>
