@@ -32,7 +32,7 @@ const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
         user: "cartikeya.official@gmail.com", // ✅ Replace with your email
-        pass: "cartikeya",    // ✅ Use an "App Password" (not your main password)
+        pass: "hlvo txxt rnmw tfzw",    // ✅ Use an "App Password" (not your main password)
     },
 });
 
@@ -41,7 +41,7 @@ const sendOTP = async (email) => {
     otpStorage.set(email, otp); // Store OTP temporarily
 
     await transporter.sendMail({
-        from: '"Your App Name" <your-email@gmail.com>',
+        from: '"Raghu stationary" cartikeya.official@gmail.com',
         to: email,
         subject: "Your OTP Code",
         text: `Your OTP is: ${otp}. It will expire in 5 minutes.`,
@@ -52,6 +52,9 @@ const sendOTP = async (email) => {
 // send route 
 app.post("/send-otp", async (req, res) => {
     const { email } = req.body;
+
+    console.log("OTP request received for:", email); // Debugging
+
 
     if (!email) {
         return res.status(400).json({ error: "Email is required" });
@@ -74,20 +77,41 @@ app.post("/verify-otp", (req, res) => {
 // Register Route
 app.post("/register", async (req, res) => {
     const { username, email, password } = req.body;
-    console.log("Received data:", req.body);
-    // Check if user already exists
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-        return res.status(400).json({ error: "User already exists" });
+
+    if (!username || !email || !password) {
+        return res.status(400).json({ error: "All fields are required" });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new User({ username, email, password: hashedPassword });
-    
-    await newUser.save();
-    res.json({ message: "User registered successfully!" });
-});
+    try {
+        // Check if user already exists (by email or username)
+        const existingUser = await User.findOne({ $or: [{ email }, { username }] });
 
+        if (existingUser) {
+            if (existingUser.email === email) {
+                return res.status(400).json({ error: "Email already exists" });
+            }
+            if (existingUser.username === username) {
+                return res.status(400).json({ error: "Username already taken" });
+            }
+        }
+
+        // Hash the password before saving (optional but recommended)
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        // Create new user
+        const newUser = new User({
+            username,
+            email,
+            password: hashedPassword,
+        });
+
+        await newUser.save();
+        res.status(201).json({ message: "Account created successfully" });
+    } catch (error) {
+        console.error("Error registering user:", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+});
 // Login Route
 app.post("/login", async (req, res) => {
     const { email, password } = req.body;
