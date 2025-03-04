@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="loginpage.html">
+  <title>My website</title>
+</head>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body {
+  margin: 0;
+  background-color: #000;
+  color: #1c0303;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  background-color: hsl(0, 100%, 90%);
+  width: 100%;
+  padding: 20px 0px;
+  height: 20px;
+}
+
+.hitler h1 {
+  font-size: 2rem;
+  color: rgb(15, 11, 11);
+  margin-left: 40px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 2.0;
+}
+.nav a {
+  position: relative;
+  font-size: 1.1rem;
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 50px;
+  margin-right: 30px;
+}
+.nav a::after {
+ content: '';
+ position: absolute;
+ width: 100%;
+ left: 0;
+ height: 3px;
+ background-color: rgb(223, 23, 23);
+ border-radius: 5px;
+ bottom: -6px;
+ transform: scale(0);
+ transition: transform .5s;
+
+}
+.nav a:hover::after {
+  transform: scale(1);
+}
+ #login-button {
+  width: 100;
+  height: 60;
+  border: 2px solid rgb(250, 204, 204);
+  background: transparent;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  margin-left: 30px;
+  font-size: 1.1rem;
+}
+#login-button:hover {
+  color:solid rgb(119, 20, 232);
+  background-color: rgb(248, 227, 248);
+  transition-delay: 1s linear;
+
+}
+
+
+/* Carousel */
+.carousel {
+  height: 100vh;
+  margin-top: -50px;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Carousel Items */
+.carousel .list .item {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
+.carousel .list .item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel .list .item .content {
+  position: absolute;
+  top: 20%;
+  width: 1140px;
+  max-width: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-right: 30%;
+  box-sizing: border-box;
+  color: #fff;
+  text-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+}
+
+.carousel .list .item .author {
+  font-weight: bold;
+  letter-spacing: 10px;
+}
+
+.carousel .list .item .title,
+.carousel .list .item .topic {
+  font-size: 5em;
+  font-weight: bold;
+  line-height: 1.3em;
+}
+
+.carousel .list .item .topic {
+  color: #f1683a;
+}
+
+.carousel .list .item .buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 130px);
+  grid-template-rows: 40px;
+  gap: 5px;
+  margin-top: 20px;
+}
+
+.carousel .list .item .buttons button {
+  border: none;
+  background-color: #ede7e7;
+  letter-spacing: 3px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+
+.carousel .list .item .buttons button:nth-child(2) {
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #f40808;
+}
+
+/* Thumbnail */
+.thumbnail {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  width: max-content;
+  z-index: 100;
+  display: flex;
+  gap: 20px;
+}
+
+.thumbnail .item {
+  width: 150px;
+  height: 220px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.thumbnail .item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.thumbnail .item .content {
+  color: #fff;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+}
+
+.thumbnail .item .content .title {
+  font-weight: 500;
+}
+
+.thumbnail .item .content .description {
+  font-weight: 300;
+}
+
+/* Arrows */
+.arrows {
+  position: absolute;
+  top: 80%;
+  right: 52%;
+  z-index: 100;
+  width: 300px;
+  max-width: 30%;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.arrows button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(238, 238, 238, 0.4);
+  border: none;
+  color: #fff;
+  font-family: monospace;
+  font-weight: bold;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.arrows button:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Animation */
+.carousel .list .item:nth-child(1) {
+  z-index: 1;
+}
+
+.carousel .list .item:nth-child(1) .content .author,
+.carousel .list .item:nth-child(1) .content .title,
+.carousel .list .item:nth-child(1) .content .topic,
+.carousel .list .item:nth-child(1) .content .des,
+.carousel .list .item:nth-child(1) .content .buttons {
+  transform: translateY(50px);
+  filter: blur(20px);
+  opacity: 0;
+  animation: showContent 0.5s 1s linear 1 forwards;
+}
+
+@keyframes showContent {
+  to {
+      transform: translateY(0);
+      filter: blur(0);
+      opacity: 1;
+  }
+}
+
+.carousel .list .item:nth-child(1) .content .title {
+  animation-delay: 1.2s !important;
+}
+
+.carousel .list .item:nth-child(1) .content .topic {
+  animation-delay: 1.4s !important;
+}
+
+.carousel .list .item:nth-child(1) .content .des {
+  animation-delay: 1.6s !important;
+}
+
+.carousel .list .item:nth-child(1) .content .buttons {
+  animation-delay: 1.8s !important;
+}
+
+/* Next / Prev */
+.carousel.next .list .item:nth-child(1) img {
+  width: 150px;
+  height: 220px;
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  border-radius: 30px;
+  animation: showImage 0.5s linear 1 forwards;
+}
+
+@keyframes showImage {
+  to {
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+  }
+}
+
+.carousel.next .thumbnail .item:nth-last-child(1) {
+  overflow: hidden;
+  animation: showThumbnail 0.5s linear 1 forwards;
+}
+
+@keyframes showThumbnail {
+  from {
+      width: 0;
+      opacity: 0;
+  }
+}
+
+.carousel.next .thumbnail {
+  animation: effectNext 0.5s linear 1 forwards;
+}
+
+@keyframes effectNext {
+  from {
+      transform: translateX(150px);
+  }
+}
+
+.carousel .time {
+  position: absolute;
+  z-index: 1000;
+  width: 0%;
+  height: 3px;
+  background-color: #f1683a
+
+</style>
+<body>
+<header>
+  <h1 id="hitler">Welcome to Consumer-To-Consumer</h1>
+  <nav class="nav">
+    <button id="login-button">Login</button>
+    <a href="#">Home</a>
+    <a href="#">Contacts</a>
+    <a href="#">Info</a>
+
+</header>
+
+<!-- carousel -->
+<div class="carousel">
+  <!-- list item -->
+  <div class="list">
+    <div class="item">
+      <img src="mini-drafter.jpg">
+      <div class="content">
+        <div class="author">KISHORE</div>
+        <div class="title">DRAFTER SLIDER</div>
+        <div class="topic">DRAFTER</div>
+        <div class="des">
+          <!-- lorem 50 -->
+          drafting, graphical representation of structures, machines, and their component parts that communicates the engineering intent of a technical design to the craftsman or worker who makes the product.
+        </div>
+        <div class="buttons">
+          <button>SEE MORE</button>
+          <button>SUBSCRIBE</button>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="Aprons image.webp">
+      <div class="content">
+        <div class="author">KISHORE</div>
+        <div class="title">APRON SLIDER</div>
+        <div class="topic">APRONS</div>
+        <div class="des">
+          An apron is a garment that is worn over other clothing to cover the front of the body. They may have several purposes, typically as a functional accessory that protects clothes and skin from stains and marks.
+        </div>
+        <div class="buttons">
+          <button>SEE MORE</button>
+          <button>SUBSCRIBE</button>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="Eg tools.jpeg">
+      <div class="content">
+        <div class="author">KISHORE</div>
+        <div class="title">TOOLS SLIDER</div>
+        <div class="topic">EG TOOLS</div>
+        <div class="des">
+          Engineering drawings specify the exact measurements of parts, including allowable variations (tolerances). This ensures parts can be manufactured and assembled correctly.
+        </div>
+        <div class="buttons">
+          <button>SEE MORE</button>
+          <button>SUBSCRIBE</button>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="Hand written image.jpeg">
+      <div class="content">
+        <div class="author">KISHORE</div>
+        <div class="title">NOTES SLIDER</div>
+        <div class="topic">HAND WRITTEN NOTES</div>
+        <div class="des">
+          Here hand written notes are available.You can choose what you want and which is suitable for you.
+        </div>
+        <div class="buttons">
+          <button>SEE MORE</button>
+          <button>SUBSCRIBE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- list thumnail -->
+  <div class="thumbnail">
+    <div class="item">
+      <img src="mini-drafter.jpg">
+      <div class="content">
+        <div class="title">
+          Name Slider
+        </div>
+        <div class="description">
+          Description
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="Aprons image.webp">
+      <div class="content">
+        <div class="title">
+          Name Slider
+        </div>
+        <div class="description">
+          Description
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="Eg tools.jpeg">
+      <div class="content">
+        <div class="title">
+          Name Slider
+        </div>
+        <div class="description">
+          Description
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="Hand written image.jpeg">
+      <div class="content">
+        <div class="title">
+          Name Slider
+        </div>
+        <div class="description">
+          Description
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- next prev -->
+
+  <div class="arrows">
+    <button id="prev"><</button>
+    <button id="next">></button>
+  </div>
+  <!-- time running -->
+  <div class="time"></div>
+</div>
+<script>
+  // Step 1: Get DOM elements
+const nextDom = document.getElementById('next');
+const prevDom = document.getElementById('prev');
+const carouselDom = document.querySelector('.carousel');
+const sliderDom = carouselDom.querySelector('.list');
+const thumbnailBorderDom = carouselDom.querySelector('.thumbnail');
+const timeDom = carouselDom.querySelector('.time');
+
+const timeRunning = 3000; // Duration of the transition
+const timeAutoNext = 7000; // Time between automatic transitions
+
+// Initialize automatic transition
+let autoNextTimeout = setTimeout(nextSlide, timeAutoNext);
+
+// Event listeners for navigation buttons
+nextDom.addEventListener('click', () => showSlider('next'));
+prevDom.addEventListener('click', () => showSlider('prev'));
+
+// Function to show the slider
+function showSlider(type) {
+  const sliderItemsDom = sliderDom.querySelectorAll('.item');
+  const thumbnailItemsDom = thumbnailBorderDom.querySelectorAll('.item');
+
+  if (type === 'next') {
+      sliderDom.appendChild(sliderItemsDom[0]);
+      thumbnailBorderDom.appendChild(thumbnailItemsDom[0]);
+      carouselDom.classList.add('next');
+  } else {
+      sliderDom.prepend(sliderItemsDom[sliderItemsDom.length - 1]);
+      thumbnailBorderDom.prepend(thumbnailItemsDom[thumbnailItemsDom.length - 1]);
+      carouselDom.classList.add('prev');
+  }
+
+  // Clear and reset the transition timer
+  clearTimeout(autoNextTimeout);
+  autoNextTimeout = setTimeout(nextSlide, timeAutoNext);
+
+  setTimeout(() => {
+      carouselDom.classList.remove('next');
+      carouselDom.classList.remove('prev');
+  }, timeRunning);
+}
+
+// Function to automatically transition to the next slide
+function nextSlide() {
+  nextDom.click();
+}
+
+</script>
+
+</body>
+</html>
